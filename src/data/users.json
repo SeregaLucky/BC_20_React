@@ -1,0 +1,7 @@
+[
+  { "id": 1, "name": "Tom", "isActive": true, "cars": ["BMW"] },
+  { "id": 2, "name": "Ania", "isActive": false, "cars": ["BMW", "Porshe"] },
+  { "id": 3, "name": "Vika", "isActive": true, "cars": ["BMW", "BMW7"] },
+  { "id": 4, "name": "Liza", "isActive": false, "cars": [] },
+  { "id": 5, "name": null, "isActive": false, "cars": [] }
+]
