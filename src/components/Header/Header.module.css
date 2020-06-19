@@ -1,0 +1,19 @@
+.header {
+  background-color: Salmon;
+  /* padding: 30px 0; */
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item {
+  padding: 20px 30px;
+  cursor: pointer;
+
+  color: #fff;
+  font-size: 22px;
+  text-transform: uppercase;
+}

@@ -1,0 +1,25 @@
+.contForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleForm {
+  text-align: center;
+}
+
+.form {
+  background-color: DeepSkyBlue;
+  width: 60%;
+  padding: 20px;
+}
+
+.inputTitle {
+  width: 100%;
+  padding: 10px;
+}
+
+.form textarea {
+  width: 100%;
+  padding: 10px;
+}
