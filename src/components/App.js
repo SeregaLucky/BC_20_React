@@ -1,7 +1,14 @@
-import React from "react";
+import React from 'react';
+import MainPage from '../page/MainPage/MainPage';
+import Form from '../page/Form/Form';
 
 const App = () => {
-  return 1;
+  return (
+    <>
+      <MainPage />
+      <Form />
+    </>
+  );
 };
 
 export default App;
