@@ -9,7 +9,7 @@ import Contacts from '../pages/Contacts/Contacts';
 import OnePage from '../pages/OnePage/OnePage';
 import PeoplePage from '../pages/People/People';
 
-// import PeopleItem from '../components/PeopleItem/PeopleItem';
+import PeopleItem from '../components/PeopleItem/PeopleItem';
 
 const App = () => {
   return (
@@ -21,7 +21,10 @@ const App = () => {
         <Route path={routes.ONE_PAGE} component={OnePage} />
         <Route path={routes.CONTACT_PAGE} component={Contacts} />
 
-        <Route path={`${routes.PEOPLE_PAGE}:peopleID`} component={PeopleItem} />
+        <Route
+          path={`${routes.PEOPLE_PAGE}/:peopleID`}
+          component={PeopleItem}
+        />
         {/* Делаем запрос за рандомными цыфрами в момент загрузки компонента */}
         <Route path={routes.PEOPLE_PAGE} component={PeoplePage} />
 

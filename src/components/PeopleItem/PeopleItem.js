@@ -7,7 +7,7 @@ class PeopleItem extends Component {
   }
 
   render() {
-    return <>{id}</>;
+    return <>PeopleItem</>;
   }
 }
 
