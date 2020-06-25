@@ -4,8 +4,14 @@ import { Switch, Route, NavLink } from 'react-router-dom';
 import ContactsAdress from '../../components/ContactsAdress/ContactsAdress';
 import ContactsInfo from '../../components/ContactsInfo/ContactsInfo';
 
-const Contacts = props => {
-  // console.log(props);
+import routes from '../../routes';
+
+const Contacts = ({ history, location, match }) => {
+  console.log('location', location);
+  // console.log('location.pathname', location.pathname);
+  // console.log('match', match);
+
+  // console.log(match.path === location.pathname);
 
   return (
     <main>
@@ -13,18 +19,40 @@ const Contacts = props => {
 
       <ul>
         <li>
-          <NavLink exact to="/contacts/1">
+          <NavLink exact to={`${match.path}/1`}>
             ContactsAdress
           </NavLink>
         </li>
         <li>
-          <NavLink to="/contacts/2">ContactsInfo</NavLink>
+          <NavLink to={`${match.path}/2`}>ContactsInfo</NavLink>
         </li>
+        {/* <li>
+          <NavLink to={`/contact/2`}>ContactsInfo</NavLink>
+        </li> */}
       </ul>
 
       <Switch>
-        <Route path="/contacts/1" component={ContactsAdress} />
-        <Route path="/contacts/2" component={ContactsInfo} />
+        {/* <Route path={`${location.pathname}`} component={ContactsAdress} />
+        <Route path={`${location.pathname}`} component={ContactsInfo} /> */}
+
+        {/* <Route
+          path={`/contact/1`}
+          render={props => <ContactsInfo {...props} id={555} />}
+        />
+        <Route
+          path={`/contact/2`}
+          render={props => <ContactsInfo {...props} id={777} />}
+        />
+      </Switch> */}
+
+        <Route
+          path={`${routes.CONTACT_PAGE}/${1}`}
+          render={props => <ContactsInfo {...props} id={555} />}
+        />
+        <Route
+          path={`${routes.CONTACT_PAGE}/${2}`}
+          render={props => <ContactsInfo {...props} id={777} />}
+        />
       </Switch>
     </main>
   );

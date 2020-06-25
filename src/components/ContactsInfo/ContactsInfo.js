@@ -1,9 +1,11 @@
 import React from 'react';
 
-const ContactsInfo = props => {
+const ContactsInfo = ({ id }) => {
   return (
     <main>
       <h2>ContactsInfo</h2>
+
+      <h3>ID: {id}</h3>
     </main>
   );
 };
