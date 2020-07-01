@@ -1,0 +1,19 @@
+.header {
+  background-color: lightcoral;
+}
+.list {
+  display: flex;
+  list-style: none;
+}
+/* .item:not(:last-child) {
+  margin: 0 40px 0 0;
+} */
+.itemActive {
+  background-color: deepskyblue;
+}
+.item a {
+  color: #fff;
+  padding: 14px 20px;
+  display: block;
+  text-transform: uppercase;
+}
