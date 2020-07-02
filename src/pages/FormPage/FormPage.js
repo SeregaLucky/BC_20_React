@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import shortid from 'shortid';
 
 import Form from '../../components/Form/Form';
+import Button from '../../components/Button/Button';
 import TodoList from '../../components/TodoList/TodoList';
 import Modal from '../../components/Modal/Modal';
+
+import ContextPositionListTodo from '../../context/contextPositionListTodo';
 
 class FormPage extends Component {
   state = {
@@ -44,6 +47,15 @@ class FormPage extends Component {
     return (
       <>
         <Form addTodo={this.addTodo} />
+
+        <ContextPositionListTodo.Consumer>
+          {state => (
+            <>
+              <Button text="Table" changePosition={state.changeTable} />
+              <Button text="Flex" changePosition={state.changeFlex} />
+            </>
+          )}
+        </ContextPositionListTodo.Consumer>
 
         <TodoList listTodo={listTodo} openModal={this.openModal} />
 

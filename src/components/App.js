@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import routes from '../routes';
@@ -6,6 +6,10 @@ import routes from '../routes';
 import Header from './Header/Header';
 import MainPage from '../pages/MainPage/MainPage';
 import FormPage from '../pages/FormPage/FormPage';
+
+// const { Consumer, Provider } = createContext();
+// console.log(Consumer);
+// console.log(Provider);
 
 const App = () => {
   return (
