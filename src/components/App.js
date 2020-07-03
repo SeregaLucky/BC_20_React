@@ -1,7 +1,8 @@
 import React from 'react';
+import Counter from '../pages/Counter/Counter';
 
 const App = () => {
-  return 1;
+  return <Counter />;
 };
 
 export default App;
