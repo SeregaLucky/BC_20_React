@@ -1,0 +1,15 @@
+.headerMain {
+  background-color: lightskyblue;
+}
+.list {
+  display: flex;
+  list-style: none;
+}
+.item {
+}
+.item a {
+  display: block;
+  color: black;
+  text-transform: uppercase;
+  padding: 10px;
+}
