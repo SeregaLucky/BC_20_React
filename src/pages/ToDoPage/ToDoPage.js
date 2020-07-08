@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ToDoActions from '../../redux/ToDo/ToDoActions';
 
-const ToDoPage = ({ listTodo }) => {
+const ToDoPage = ({ listTodo, deleteTodo }) => {
   console.log('listTodo', listTodo);
 
   return (
@@ -10,15 +11,28 @@ const ToDoPage = ({ listTodo }) => {
 
       <ul>
         {listTodo.map(item => (
-          <li key={item.id}>{item.text}</li>
+          <li key={item.id}>
+            <h3>{item.text}</h3>
+            <button type="button" onClick={() => deleteTodo(item.id)}>
+              Delete
+            </button>
+          </li>
         ))}
       </ul>
     </main>
   );
 };
 
-const mapStateToProps = state => ({
-  listTodo: state.todo.todo,
-});
+const mapStateToProps = state => {
+  return {
+    listTodo: state.todoRoot.todo,
+  };
+};
 
-export default connect(mapStateToProps)(ToDoPage);
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteTodo: id => dispatch(ToDoActions.deleteItem(id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoPage);

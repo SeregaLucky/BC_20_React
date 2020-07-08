@@ -6,10 +6,13 @@ const obj = {
   text: 'To do ZERO',
 };
 
-const todoReducer = (state = [obj], action) => {
+const todoReducer = (state = [], action) => {
   switch (action.type) {
     case ToDoTypes.ADD_ITEM:
       return [...state, action.payload.todo];
+
+    case ToDoTypes.DELETE_ITEM:
+      return state.filter(item => item.id !== action.payload.id);
 
     default:
       return state;
