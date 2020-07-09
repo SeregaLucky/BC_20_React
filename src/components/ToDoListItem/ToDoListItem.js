@@ -8,6 +8,7 @@ class ToDoPage extends Component {
   render() {
     const { item, isSwowForm, deleteTodo, addIdEditItem } = this.props;
     const { value } = this.state;
+    console.log('RENDER ONE ITEM');
 
     return (
       <li>
