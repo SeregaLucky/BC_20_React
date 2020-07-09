@@ -1,4 +1,7 @@
 export default {
   ADD_ITEM: 'ToDo/ADD_ITEM',
   DELETE_ITEM: 'ToDo/DELETE_ITEM',
+  CHANGE_ITEM: 'ToDo/CHANGE_ITEM',
+
+  ADD_ID_EDIT_ITEM: 'ToDo/ADD_ID_EDIT_ITEM',
 };

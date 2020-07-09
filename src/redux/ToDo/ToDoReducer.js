@@ -14,6 +14,23 @@ const todoReducer = (state = [], action) => {
     case ToDoTypes.DELETE_ITEM:
       return state.filter(item => item.id !== action.payload.id);
 
+    case ToDoTypes.CHANGE_ITEM:
+      return state.map(item =>
+        item.id === action.payload.id
+          ? { ...item, text: action.payload.text }
+          : item,
+      );
+
+    default:
+      return state;
+  }
+};
+
+const idEditItemReducer = (state = [], action) => {
+  switch (action.type) {
+    case ToDoTypes.ADD_ID_EDIT_ITEM:
+      return [...state, action.payload.id];
+
     default:
       return state;
   }
@@ -21,4 +38,5 @@ const todoReducer = (state = [], action) => {
 
 export default combineReducers({
   todo: todoReducer,
+  idEditItem: idEditItemReducer,
 });
