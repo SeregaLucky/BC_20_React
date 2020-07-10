@@ -6,12 +6,12 @@ import ToDoListItem from '../../components/ToDoListItem/ToDoListItem';
 
 const ToDoPage = ({
   listTodo,
-  arrayIdsEditItem,
+  // arrayIdsEditItem,
 
-  deleteTodo,
-  changeTodo,
-  addIdEditItem,
-  deleteIdEditItem,
+  // deleteTodo,
+  // changeTodo,
+  // addIdEditItem,
+  // deleteIdEditItem,
 }) => {
   return (
     <main>
@@ -22,11 +22,12 @@ const ToDoPage = ({
           <ToDoListItem
             key={item.id}
             item={item}
-            deleteTodo={deleteTodo}
-            addIdEditItem={() => addIdEditItem(item.id)}
-            isSwowForm={arrayIdsEditItem.some(id => id === item.id)}
-            deleteIdEditItem={() => deleteIdEditItem(item.id)}
-            changeTodo={text => changeTodo(item.id, text)}
+            id={item.id}
+            // deleteTodo={deleteTodo}
+            // addIdEditItem={() => addIdEditItem(item.id)}
+            // isSwowForm={arrayIdsEditItem.some(id => id === item.id)}
+            // deleteIdEditItem={() => deleteIdEditItem(item.id)}
+            // changeTodo={text => changeTodo(item.id, text)}
           />
         ))}
       </ul>
@@ -37,16 +38,16 @@ const ToDoPage = ({
 const mapStateToProps = state => {
   return {
     listTodo: state.todoRoot.todo,
-    arrayIdsEditItem: state.todoRoot.idEditItem,
+    // arrayIdsEditItem: state.todoRoot.idEditItem,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteTodo: id => dispatch(ToDoActions.deleteItem(id)),
-    changeTodo: (id, text) => dispatch(ToDoActions.changeItem(id, text)),
-    addIdEditItem: id => dispatch(ToDoActions.addIdEditItem(id)),
-    deleteIdEditItem: id => dispatch(ToDoActions.deleteIdEditItem(id)),
+    // deleteTodo: id => dispatch(ToDoActions.deleteItem(id)),
+    // changeTodo: (id, text) => dispatch(ToDoActions.changeItem(id, text)),
+    // addIdEditItem: id => dispatch(ToDoActions.addIdEditItem(id)),
+    // deleteIdEditItem: id => dispatch(ToDoActions.deleteIdEditItem(id)),
   };
 };
 

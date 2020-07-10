@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import ToDoActions from '../../redux/ToDo/ToDoActions';
 
 class ToDoPage extends Component {
   state = { value: '' };
@@ -28,7 +30,7 @@ class ToDoPage extends Component {
           </button>
         )}
 
-        <button type="button" onClick={() => deleteTodo(item.id)}>
+        <button type="button" onClick={deleteTodo}>
           Delete
         </button>
 
@@ -42,4 +44,23 @@ class ToDoPage extends Component {
     );
   }
 }
-export default ToDoPage;
+
+const mapStateToProps = (state, { id }) => {
+  const arrayIdsEditItem = state.todoRoot.idEditItem;
+  const isSwowForm = arrayIdsEditItem.some(idEdit => idEdit === id);
+
+  return {
+    isSwowForm,
+  };
+};
+
+const mapDispatchToProps = (dispatch, { id }) => {
+  return {
+    deleteTodo: () => dispatch(ToDoActions.deleteItem(id)),
+    changeTodo: text => dispatch(ToDoActions.changeItem(id, text)),
+    addIdEditItem: () => dispatch(ToDoActions.addIdEditItem(id)),
+    deleteIdEditItem: () => dispatch(ToDoActions.deleteIdEditItem(id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoPage);
