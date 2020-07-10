@@ -5,6 +5,14 @@ class ToDoPage extends Component {
 
   handleChange = ({ target }) => this.setState({ value: target.value });
 
+  handleSubmit = e => {
+    e.preventDefault();
+    const { deleteIdEditItem, changeTodo } = this.props;
+
+    changeTodo(this.state.value);
+    deleteIdEditItem();
+  };
+
   render() {
     const { item, isSwowForm, deleteTodo, addIdEditItem } = this.props;
     const { value } = this.state;
@@ -25,9 +33,9 @@ class ToDoPage extends Component {
         </button>
 
         {isSwowForm && (
-          <form onSubmit={() => {}}>
+          <form onSubmit={this.handleSubmit}>
             <input type="text" value={value} onChange={this.handleChange} />
-            <button type="button">Edit</button>
+            <button type="submit">Edit</button>
           </form>
         )}
       </li>

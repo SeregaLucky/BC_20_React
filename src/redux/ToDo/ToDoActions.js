@@ -34,4 +34,18 @@ const addIdEditItem = id => ({
   },
 });
 
-export default { addItem, deleteItem, changeItem, addIdEditItem };
+const deleteIdEditItem = id => ({
+  type: ToDoTypes.DELETE_ID_EDIT_ITEM,
+
+  payload: {
+    id: id,
+  },
+});
+
+export default {
+  addItem,
+  deleteItem,
+  changeItem,
+  addIdEditItem,
+  deleteIdEditItem,
+};

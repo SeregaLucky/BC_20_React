@@ -7,8 +7,11 @@ import ToDoListItem from '../../components/ToDoListItem/ToDoListItem';
 const ToDoPage = ({
   listTodo,
   arrayIdsEditItem,
+
   deleteTodo,
+  changeTodo,
   addIdEditItem,
+  deleteIdEditItem,
 }) => {
   return (
     <main>
@@ -22,6 +25,8 @@ const ToDoPage = ({
             deleteTodo={deleteTodo}
             addIdEditItem={() => addIdEditItem(item.id)}
             isSwowForm={arrayIdsEditItem.some(id => id === item.id)}
+            deleteIdEditItem={() => deleteIdEditItem(item.id)}
+            changeTodo={text => changeTodo(item.id, text)}
           />
         ))}
       </ul>
@@ -41,6 +46,7 @@ const mapDispatchToProps = dispatch => {
     deleteTodo: id => dispatch(ToDoActions.deleteItem(id)),
     changeTodo: (id, text) => dispatch(ToDoActions.changeItem(id, text)),
     addIdEditItem: id => dispatch(ToDoActions.addIdEditItem(id)),
+    deleteIdEditItem: id => dispatch(ToDoActions.deleteIdEditItem(id)),
   };
 };
 

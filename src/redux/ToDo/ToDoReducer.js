@@ -31,6 +31,9 @@ const idEditItemReducer = (state = [], action) => {
     case ToDoTypes.ADD_ID_EDIT_ITEM:
       return [...state, action.payload.id];
 
+    case ToDoTypes.DELETE_ID_EDIT_ITEM:
+      return state.filter(id => id !== action.payload.id);
+
     default:
       return state;
   }
