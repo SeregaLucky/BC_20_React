@@ -8,6 +8,9 @@ const obj = {
 
 const todoReducer = (state = [], action) => {
   switch (action.type) {
+    case ToDoTypes.GET_ITEM_SUCCESS:
+      return [...state, ...action.payload.listToDo];
+
     case ToDoTypes.ADD_ITEM:
       return [...state, action.payload.todo];
 
@@ -39,7 +42,37 @@ const idEditItemReducer = (state = [], action) => {
   }
 };
 
+const loadingReducer = (state = false, { type }) => {
+  switch (type) {
+    case ToDoTypes.GET_ITEM_START:
+      return true;
+
+    case ToDoTypes.GET_ITEM_SUCCESS:
+    case ToDoTypes.GET_ITEM_FAILURE:
+      return false;
+
+    default:
+      return state;
+  }
+};
+
+const todoErrorReducer = (state = null, { type, payload }) => {
+  switch (type) {
+    case ToDoTypes.GET_ITEM_FAILURE:
+      return payload.error;
+
+    case ToDoTypes.GET_ITEM_START:
+    case ToDoTypes.GET_ITEM_SUCCESS:
+      return null;
+
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   todo: todoReducer,
   idEditItem: idEditItemReducer,
+  loading: loadingReducer,
+  todoError: todoErrorReducer,
 });

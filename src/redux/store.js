@@ -1,28 +1,31 @@
-import { createStore } from 'redux';
-
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './rootReducer';
 
 console.log('rootReducer', rootReducer);
 
 const todo = [
   {
-    id: 1,
+    id: '99990',
     text: 'To do ZERO',
   },
   {
-    id: 2,
+    id: '99991',
     text: 'To do 222',
   },
   {
-    id: 3,
+    id: '99992',
     text: 'To do 333',
   },
 ];
 
+const middleware = [thunk];
+
 export const store = createStore(
   rootReducer,
   { todoRoot: { todo } },
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  composeWithDevTools(applyMiddleware(...middleware)),
 );
 
 // const aaa = store => next => action => {

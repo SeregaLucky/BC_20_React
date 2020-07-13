@@ -46,6 +46,8 @@ class ToDoPage extends Component {
 }
 
 const mapStateToProps = (state, { id }) => {
+  // console.log(11111111111111);
+
   const arrayIdsEditItem = state.todoRoot.idEditItem;
   const isSwowForm = arrayIdsEditItem.some(idEdit => idEdit === id);
 

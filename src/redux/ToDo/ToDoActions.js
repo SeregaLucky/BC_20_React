@@ -1,7 +1,29 @@
 import ToDoTypes from './ToDoTypes';
 
-const addItem = text => ({
-  type: ToDoTypes.ADD_ITEM,
+/* GET */
+const getItemStart = () => ({
+  type: ToDoTypes.GET_ITEM_START,
+});
+
+const getItemSuccess = listToDo => ({
+  type: ToDoTypes.GET_ITEM_SUCCESS,
+
+  payload: { listToDo },
+});
+
+const getItemFailure = error => ({
+  type: ToDoTypes.GET_ITEM_FAILURE,
+
+  payload: { error },
+});
+
+/* ADD */
+const addItemStart = () => ({
+  type: ToDoTypes.ADD_ITEM_START,
+});
+
+const addItemSuccess = text => ({
+  type: ToDoTypes.ADD_ITEM_SUCCESS,
 
   payload: {
     todo: {
@@ -11,12 +33,20 @@ const addItem = text => ({
   },
 });
 
+const addItemFailure = error => ({
+  type: ToDoTypes.ADD_ITEM_FAILURE,
+
+  payload: { error },
+});
+
+/* DELETE */
 const deleteItem = idItemDelete => ({
   type: ToDoTypes.DELETE_ITEM,
 
   payload: { id: idItemDelete },
 });
 
+/* CHANGE */
 const changeItem = (idItemChange, changeText) => ({
   type: ToDoTypes.CHANGE_ITEM,
 
@@ -43,7 +73,14 @@ const deleteIdEditItem = id => ({
 });
 
 export default {
-  addItem,
+  getItemStart,
+  getItemSuccess,
+  getItemFailure,
+
+  addItemStart,
+  addItemSuccess,
+  addItemFailure,
+
   deleteItem,
   changeItem,
   addIdEditItem,
