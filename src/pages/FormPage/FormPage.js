@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ToDoActions from '../../redux/ToDo/ToDoActions';
+// import ToDoActions from '../../redux/ToDo/ToDoActions';
+import ToDoOperations from '../../redux/ToDo/ToDoOperations';
 
 class FormPage extends Component {
   state = { value: '' };
@@ -29,7 +30,7 @@ class FormPage extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addTodo: text => dispatch(ToDoActions.addItem(text)),
+  addTodo: text => dispatch(ToDoOperations.addToDoOperations(text)),
 });
 
 export default connect(null, mapDispatchToProps)(FormPage);

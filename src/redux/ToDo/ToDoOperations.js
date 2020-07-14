@@ -10,4 +10,45 @@ const getAllToDoOperations = () => dispatch => {
     .catch(error => dispatch(ToDoActions.getItemFailure(error)));
 };
 
-export default { getAllToDoOperations };
+const addToDoOperations = text => dispatch => {
+  dispatch(ToDoActions.addItemStart());
+
+  api
+    .addTodo(text)
+    .then(({ data }) => {
+      console.log(data);
+      dispatch(ToDoActions.addItemSuccess(data));
+    })
+    .catch(error => dispatch(ToDoActions.addItemFailure(error)));
+};
+
+const deleteToDoOperations = id => dispatch => {
+  dispatch(ToDoActions.deleteItemStart());
+
+  api
+    .deleteTodo(id)
+    .then(() => {
+      console.log('DELETE ITEM');
+      dispatch(ToDoActions.deleteItemSuccess(id));
+    })
+    .catch(error => dispatch(ToDoActions.deleteItemFailure(error)));
+};
+
+const changeToDoOperations = (id, text) => dispatch => {
+  dispatch(ToDoActions.changeItemStart());
+
+  api
+    .changeTodo(id, text)
+    .then(({ data }) => {
+      console.log(data);
+      dispatch(ToDoActions.changeItemSuccess(id, text));
+    })
+    .catch(error => dispatch(ToDoActions.changeItemFailure(error)));
+};
+
+export default {
+  getAllToDoOperations,
+  addToDoOperations,
+  deleteToDoOperations,
+  changeToDoOperations,
+};

@@ -22,15 +22,10 @@ const addItemStart = () => ({
   type: ToDoTypes.ADD_ITEM_START,
 });
 
-const addItemSuccess = text => ({
+const addItemSuccess = todo => ({
   type: ToDoTypes.ADD_ITEM_SUCCESS,
 
-  payload: {
-    todo: {
-      id: Date.now(),
-      text,
-    },
-  },
+  payload: { todo },
 });
 
 const addItemFailure = error => ({
@@ -40,20 +35,40 @@ const addItemFailure = error => ({
 });
 
 /* DELETE */
-const deleteItem = idItemDelete => ({
-  type: ToDoTypes.DELETE_ITEM,
+const deleteItemStart = () => ({
+  type: ToDoTypes.DELETE_ITEM_START,
+});
+
+const deleteItemSuccess = idItemDelete => ({
+  type: ToDoTypes.DELETE_ITEM_SUCCESS,
 
   payload: { id: idItemDelete },
 });
 
+const deleteItemFailure = error => ({
+  type: ToDoTypes.DELETE_ITEM_FAILURE,
+
+  payload: { error },
+});
+
 /* CHANGE */
-const changeItem = (idItemChange, changeText) => ({
-  type: ToDoTypes.CHANGE_ITEM,
+const changeItemStart = () => ({
+  type: ToDoTypes.CHANGE_ITEM_START,
+});
+
+const changeItemSuccess = (idItemChange, changeText) => ({
+  type: ToDoTypes.CHANGE_ITEM_SUCCESS,
 
   payload: {
     id: idItemChange,
     text: changeText,
   },
+});
+
+const changeItemFailure = error => ({
+  type: ToDoTypes.CHANGE_ITEM_FAILURE,
+
+  payload: { error },
 });
 
 const addIdEditItem = id => ({
@@ -81,8 +96,14 @@ export default {
   addItemSuccess,
   addItemFailure,
 
-  deleteItem,
-  changeItem,
+  deleteItemStart,
+  deleteItemSuccess,
+  deleteItemFailure,
+
+  changeItemStart,
+  changeItemSuccess,
+  changeItemFailure,
+
   addIdEditItem,
   deleteIdEditItem,
 };

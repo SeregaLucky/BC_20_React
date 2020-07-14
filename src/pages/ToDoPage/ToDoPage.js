@@ -3,7 +3,7 @@ import React from 'react';
 import ToDoListItem from '../../components/ToDoListItem/ToDoListItem';
 
 const ToDoPage = ({ listTodo }) => {
-  console.log(listTodo);
+  // console.log(listTodo);
   return (
     <main>
       <h2>ToDoPage</h2>

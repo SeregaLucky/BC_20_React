@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './rootReducer';
 
-console.log('rootReducer', rootReducer);
+// console.log('rootReducer', rootReducer);
 
 const todo = [
   {

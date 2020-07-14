@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ToDoOperations from '../../redux/ToDo/ToDoOperations';
+import {
+  getListTodo,
+  isLoading,
+  // getError,
+} from '../../redux/ToDo/ToDoSelectors';
 
 import ToDoPage from './ToDoPage';
 import Loader from '../../components/Loader/Loader';
@@ -14,7 +19,7 @@ class ToDoPageContainer extends Component {
 
   render() {
     const { listTodo, isLoading, error } = this.props;
-    console.log(isLoading);
+    // console.log(isLoading);
     return (
       <>
         {isLoading && <Loader />}
@@ -28,8 +33,8 @@ class ToDoPageContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    listTodo: state.todoRoot.todo,
-    isLoading: state.todoRoot.loading,
+    listTodo: getListTodo(state),
+    isLoading: isLoading(state),
     error: state.todoRoot.todoError,
   };
 };
