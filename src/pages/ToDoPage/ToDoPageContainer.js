@@ -1,48 +1,36 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ToDoOperations from '../../redux/ToDo/ToDoOperations';
 import {
   getListTodo,
   isLoading,
-  // getError,
+  getError,
 } from '../../redux/ToDo/ToDoSelectors';
 
 import ToDoPage from './ToDoPage';
 import Loader from '../../components/Loader/Loader';
 
-class ToDoPageContainer extends Component {
-  componentDidMount() {
-    const { getAllToto } = this.props;
-    getAllToto();
-  }
+const ToDoPageContainer = () => {
+  const dispatch = useDispatch();
 
-  render() {
-    const { listTodo, isLoading, error } = this.props;
-    // console.log(isLoading);
-    return (
-      <>
-        {isLoading && <Loader />}
-        <ToDoPage listTodo={listTodo} />
+  /* SELECTORS */
+  const listTodo = useSelector(getListTodo);
+  const isLoadingNow = useSelector(isLoading);
+  const error = useSelector(state => getError(state));
 
-        {error && <p>ERRORRRRRR</p>}
-      </>
-    );
-  }
-}
+  /* MAKE GET ALL TODO */
+  useEffect(() => dispatch(ToDoOperations.getAllToDoOperations()), []);
 
-const mapStateToProps = state => {
-  return {
-    listTodo: getListTodo(state),
-    isLoading: isLoading(state),
-    error: state.todoRoot.todoError,
-  };
+  return (
+    <>
+      {isLoadingNow && <Loader />}
+
+      <ToDoPage listTodo={listTodo} />
+
+      {error && <p>ERRORRRRRR</p>}
+    </>
+  );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getAllToto: () => dispatch(ToDoOperations.getAllToDoOperations()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ToDoPageContainer);
+export default ToDoPageContainer;

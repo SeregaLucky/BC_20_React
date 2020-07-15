@@ -8,8 +8,10 @@ import ToDoTypes from './ToDoTypes';
 
 const todoReducer = (state = [], action) => {
   switch (action.type) {
+    // case ToDoTypes.GET_ITEM_SUCCESS:
+    //   return [...state, ...action.payload.listToDo];
     case ToDoTypes.GET_ITEM_SUCCESS:
-      return [...state, ...action.payload.listToDo];
+      return action.payload.listToDo;
 
     case ToDoTypes.ADD_ITEM_SUCCESS:
       return [...state, action.payload.todo];
@@ -36,6 +38,16 @@ const idEditItemReducer = (state = [], action) => {
 
     case ToDoTypes.DELETE_ID_EDIT_ITEM:
       return state.filter(id => id !== action.payload.id);
+
+    default:
+      return state;
+  }
+};
+
+const idEditItemNowReducer = (state = null, { type, payload }) => {
+  switch (type) {
+    case ToDoTypes.ADD_ID_EDIT_ITEM:
+      return payload.id;
 
     default:
       return state;
@@ -77,6 +89,8 @@ const todoErrorReducer = (state = null, { type, payload }) => {
 export default combineReducers({
   todo: todoReducer,
   idEditItem: idEditItemReducer,
+  idEditItemNow: idEditItemNowReducer,
+
   loading: loadingReducer,
   todoError: todoErrorReducer,
 });

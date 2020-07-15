@@ -71,6 +71,7 @@ const changeItemFailure = error => ({
   payload: { error },
 });
 
+/* OTHER */
 const addIdEditItem = id => ({
   type: ToDoTypes.ADD_ID_EDIT_ITEM,
 

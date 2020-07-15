@@ -1,36 +1,43 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-// import ToDoActions from '../../redux/ToDo/ToDoActions';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import ToDoOperations from '../../redux/ToDo/ToDoOperations';
 
-class FormPage extends Component {
-  state = { value: '' };
+const FormPage = () => {
+  const dispatch = useDispatch();
 
-  handleChange = ({ target }) => this.setState({ value: target.value });
+  /* TITLE TODO */
+  const [titleTodo, setTitle] = useState('');
+  const handleChangeTitle = ({ target }) => setTitle(target.value);
 
-  handleSubmit = e => {
+  /* TEXT TODO */
+  const [value, setInput] = useState('');
+  const handleChangeText = ({ target }) => setInput(target.value);
+
+  const handleSubmit = e => {
     e.preventDefault();
-    const { addTodo } = this.props;
-    console.log(addTodo);
 
-    addTodo(this.state.value);
+    dispatch(ToDoOperations.addToDoOperations(titleTodo, value));
   };
 
-  render() {
-    const { value } = this.state;
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="title"
+        value={titleTodo}
+        onChange={handleChangeTitle}
+        placeholder="Tilte..."
+      />
+      <input
+        type="text"
+        value={value}
+        onChange={handleChangeText}
+        placeholder="Text..."
+      />
 
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" value={value} onChange={this.handleChange} />
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
 
-        <button type="submit">Submit</button>
-      </form>
-    );
-  }
-}
-
-const mapDispatchToProps = dispatch => ({
-  addTodo: text => dispatch(ToDoOperations.addToDoOperations(text)),
-});
-
-export default connect(null, mapDispatchToProps)(FormPage);
+export default FormPage;

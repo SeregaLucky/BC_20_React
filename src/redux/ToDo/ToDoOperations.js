@@ -10,11 +10,11 @@ const getAllToDoOperations = () => dispatch => {
     .catch(error => dispatch(ToDoActions.getItemFailure(error)));
 };
 
-const addToDoOperations = text => dispatch => {
+const addToDoOperations = (title, text) => dispatch => {
   dispatch(ToDoActions.addItemStart());
 
   api
-    .addTodo(text)
+    .addTodo(title, text)
     .then(({ data }) => {
       console.log(data);
       dispatch(ToDoActions.addItemSuccess(data));
