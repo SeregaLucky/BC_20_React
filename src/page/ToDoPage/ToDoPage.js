@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllToDo } from '../../servises/api';
+import { getAllToDo, controller } from '../../servises/api';
 
 class ToDoPage extends Component {
   state = { listTodo: null };
@@ -12,8 +12,12 @@ class ToDoPage extends Component {
         this.setState({ listTodo: listTodo });
       })
       .catch(err => {
-        console.log(err);
+        console.error(err);
       });
+  }
+
+  componentWillMount() {
+    controller.abort();
   }
 
   render() {

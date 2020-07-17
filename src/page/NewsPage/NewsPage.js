@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getNews } from '../../servises/api';
+import { getNews, controller } from '../../servises/api';
 
 class NewsPage extends Component {
   state = {
@@ -12,11 +12,12 @@ class NewsPage extends Component {
         console.log(data.articles);
         this.setState({ listNews: data.articles });
       })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }
 
   componentWillUnmount() {
     console.log('Unmount');
+    controller.abort();
   }
 
   render() {

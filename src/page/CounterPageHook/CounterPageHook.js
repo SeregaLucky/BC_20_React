@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const CounterPageHook = () => {
   // state = {
-  //   value: 0,
+  //   value: 10,
   //   step: 1,
   //   age: 22,
   //   power: 33,
@@ -18,12 +18,20 @@ const CounterPageHook = () => {
 
   // componentDidMount + componentDidUpdate + componentWillUnmount
   useEffect(() => {
-    console.log('useEffect ALL');
+    console.log('useEffect componentDidMount componentWillUnmount');
 
     return () => {
       console.log('useEffect componentWillUnmount');
     };
   }, []);
+
+  useEffect(() => {
+    console.log('111');
+
+    return () => {
+      console.log('222');
+    };
+  });
 
   // componentDidMount
   useEffect(() => {

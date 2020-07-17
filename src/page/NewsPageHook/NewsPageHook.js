@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { getNews } from '../../servises/api';
+import { getNews, controller } from '../../servises/api';
 
 const NewsPageHook = () => {
   const [listNews, setListNews] = useState([]);
 
   useEffect(() => {
-    console.log(111);
     getNews()
       .then(data => setListNews(data.articles))
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
 
     return () => {
-      // Очистка
       console.log('Тут делаем очистку');
+      controller.abort();
     };
   }, []);
 

@@ -1,17 +1,17 @@
 const baseURL = 'https://newsapi.org/v2';
 const apiKey = '33597ec26ed845a18da1dd8decec5ea1';
 
-// const controller = new AbortController();
-// const signal = controller.signal;
+export const controller = new AbortController();
+const signal = controller.signal;
 
 export const getNews = () => {
-  return fetch(baseURL + '/everything?q=bitcoin&apiKey=' + apiKey)
+  return fetch(baseURL + '/everything?q=bitcoin&apiKey=' + apiKey, { signal })
     .then(res => res.json())
     .then(data => data);
 };
 
 export const getAllToDo = async () => {
-  const res = await fetch('http://localhost:4242/todo');
+  const res = await fetch('http://localhost:4242/todo', { signal });
   return res.json();
 };
 
