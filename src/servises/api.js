@@ -2,7 +2,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://uxcandy.com/~shapoval/test-task-backend/v2';
 
-export const postLigin = (username, password) => {
+const postLigin = (username, password) => {
   console.log(username, password);
 
   const params = new URLSearchParams();

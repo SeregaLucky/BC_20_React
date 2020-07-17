@@ -47,7 +47,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    makeLogout: () => dispatch(authActions.logicSuccess()),
+    makeLogout: () => dispatch(authActions.logautSuccess()),
   };
 };
 

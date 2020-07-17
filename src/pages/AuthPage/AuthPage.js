@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import withAuth from '../../hoc/withAuth';
 import { useDispatch } from 'react-redux';
-import { loginOperations } from '../../redux/auth/authReducer';
+import { loginOperations } from '../../redux/auth/authOperations';
 
 const AuthPage = () => {
   const dispatch = useDispatch();

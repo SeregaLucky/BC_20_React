@@ -7,7 +7,7 @@ import { persistStore } from 'redux-persist';
 import rootReducer from './rootReducer';
 import { showAction } from '../servises/showAction';
 
-const middleware = [thunk, showAction];
+const middleware = [showAction, thunk];
 
 export const store = createStore(
   rootReducer,
