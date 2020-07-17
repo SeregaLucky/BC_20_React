@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import authTypes from '../../redux/auth/authTypes';
+import authActions from '../../redux/auth/authActions';
+
 const Header = ({ token, makeLogout }) => {
   const logout = () => makeLogout();
 
@@ -32,10 +35,6 @@ const Header = ({ token, makeLogout }) => {
           Logout
         </button>
       )}
-
-      {/* <button type="button" onClick={logout}>
-        Logout
-      </button> */}
     </header>
   );
 };
@@ -48,8 +47,19 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    makeLogout: () => dispatch({ type: 'auth/LOGOUT_SUCCESS' }),
+    makeLogout: () => dispatch(authActions.logicSuccess()),
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+//
+//
+//
+//
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     makeLogout: () => dispatch({ type: authTypes.LOGOUT_SUCCESS }),
+//   };
+// };

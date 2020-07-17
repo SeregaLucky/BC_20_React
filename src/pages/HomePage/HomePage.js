@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import authTypes from '../../redux/auth/authTypes';
+import authActions from '../../redux/auth/authActions';
 
 const HomePage = ({ isShowText, makeToggle, showTextNow, hideTextNow }) => {
   const toggle = () => makeToggle();
@@ -38,21 +40,39 @@ const mapStateToProps = state => {
 
 const mapDisptchToProps = dispatch => {
   return {
-    makeToggle: () => dispatch({ type: 'auth/IS_SHOW_TEXT' }),
-    showTextNow: () =>
-      dispatch({
-        type: 'auth/SHOW_TEXT',
-        payload: true,
-      }),
-    hideTextNow: () =>
-      dispatch({
-        type: 'auth/HIDE_TEXT',
-        payload: false,
-      }),
+    makeToggle: () => dispatch(authActions.isShowText()),
+    showTextNow: () => dispatch(authActions.showText()),
+    hideTextNow: () => dispatch(authActions.hideText()),
   };
 };
 
 export default connect(mapStateToProps, mapDisptchToProps)(HomePage);
+
+//
+//
+//
+//
+
+// const mapDisptchToProps = dispatch => {
+//   return {
+//     makeToggle: () => dispatch({ type: authTypes.IS_SHOW_TEXT }),
+//     showTextNow: () =>
+//       dispatch({
+//         type: authTypes.SHOW_TEXT,
+//         payload: true,
+//       }),
+//     hideTextNow: () =>
+//       dispatch({
+//         type: authTypes.HIDE_TEXT,
+//         payload: false,
+//       }),
+//   };
+// };
+
+//
+//
+//
+//
 
 // function connect(cb1, cb2) {
 //   // const state =

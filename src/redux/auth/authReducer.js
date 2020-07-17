@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
+import authTypes from './authTypes';
+import authActions from './authActions';
 // import api, { postLigin } from '../../servises/api';
 
 import axios from 'axios';
@@ -16,10 +18,12 @@ export const loginOperations = (username, password) => (dispatch, getState) => {
     .post('/login/?developer=Name', params)
     .then(res => {
       console.log(res.data);
-      dispatch({
-        type: 'auth/LOGIN_SUCCESS',
-        payload: { token: res.data.message.token },
-      });
+      dispatch(authActions.loginSuccess(res.data.message.token));
+
+      // dispatch({
+      //   type: authTypes.LOGIN_SUCCESS,
+      //   payload: { token: res.data.message.token },
+      // });
     })
     .catch(err => {
       console.log(err);
@@ -29,11 +33,10 @@ export const loginOperations = (username, password) => (dispatch, getState) => {
 /* REDUCERS */
 const tokenReducer = (state = null, action) => {
   switch (action.type) {
-    case 'auth/LOGIN_SUCCESS':
-      // console.log
+    case authTypes.LOGIN_SUCCESS:
       return action.payload.token;
 
-    case 'auth/LOGOUT_SUCCESS':
+    case authTypes.LOGOUT_SUCCESS:
       return null;
 
     default:
@@ -43,13 +46,13 @@ const tokenReducer = (state = null, action) => {
 
 const isShowTextReducer = (state = true, action) => {
   switch (action.type) {
-    case 'auth/IS_SHOW_TEXT':
+    case authTypes.IS_SHOW_TEXT:
       return !state;
 
-    case 'auth/SHOW_TEXT':
+    case authTypes.SHOW_TEXT:
       return action.payload;
 
-    case 'auth/HIDE_TEXT':
+    case authTypes.HIDE_TEXT:
       return action.payload;
 
     default:
