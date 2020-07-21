@@ -1,0 +1,11 @@
+.list {
+  list-style: none;
+}
+
+.list a {
+  color: black;
+}
+
+.active {
+  background-color: salmon;
+}
