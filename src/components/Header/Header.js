@@ -24,6 +24,12 @@ const Header = () => {
               Counter page
             </NavLink>
           </li>
+
+          <li>
+            <NavLink to="/modalPage" activeClassName={styles.active}>
+              Modal page
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>
