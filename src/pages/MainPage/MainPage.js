@@ -3,14 +3,14 @@ import myVideo from './v1.mp4';
 
 const MainPage = () => {
   const [voidNow, changeVoid] = useState(true);
-  const [volume, changeVolume] = useState(0.8);
+  const [volume, setVolume] = useState(0.8);
 
   const onPlayVideo = () => videoRef.current.play();
   const onStopVideo = () => videoRef.current.pause();
   const onPlayVoid = () => changeVoid(!voidNow);
   const onChangeVolume = ({ target }) => {
     let { value } = target;
-    changeVolume(value);
+    setVolume(value);
     videoRef.current.volume = value;
   };
 
@@ -29,11 +29,11 @@ const MainPage = () => {
       <div>
         <video
           ref={videoRef}
-          // autoPlay
+          // autoPlay // Включает сразу видео при загрузке
           width={400}
           src={myVideo}
           muted={voidNow}
-          controls
+          controls // Включает встроенные контролы
         ></video>
       </div>
 
@@ -51,8 +51,8 @@ const MainPage = () => {
         type="range"
         min="0"
         max="1"
-        value={volume}
         step="0.01"
+        value={volume}
         onChange={onChangeVolume}
       />
     </>
